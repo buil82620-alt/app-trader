@@ -86,11 +86,16 @@ export default defineConfig({
 
 1. Tạo site mới trên Netlify
 2. Kết nối với cùng GitHub repository
-3. Cấu hình:
-   - **Base directory**: `cms`
-   - **Build command**: `npm run build`
-   - **Publish directory**: `cms/dist`
+3. **QUAN TRỌNG**: Trong Netlify Dashboard → Site settings → Build & deploy → Build settings:
+   - **Base directory**: `cms` (phải set đúng!)
+   - **Build command**: `npm run build` (Netlify sẽ tự động chạy trong base directory)
+   - **Publish directory**: `dist` (relative to base directory, không phải `cms/dist`)
    - **Node version**: `20`
+
+**Lưu ý quan trọng**: 
+- Khi set Base directory là `cms`, Netlify sẽ tự động chạy commands trong thư mục đó
+- Netlify sẽ đọc `cms/netlify.toml` nếu có, hoặc dùng settings từ Dashboard
+- Nếu vẫn lỗi, có thể xóa `cms/netlify.toml` và chỉ dùng settings từ Dashboard
 
 ### Bước 4: Thêm Environment Variables
 
@@ -115,14 +120,17 @@ NODE_ENV=production
 3. Chọn repository
 4. Cấu hình:
    - **Root Directory**: (để trống)
-   - **Build Command**: (không cần)
+   - **Build Command**: Railway sẽ tự động detect Dockerfile
    - **Start Command**: `node socket-server.js`
    - **Port**: Railway tự động assign
+   - **Node Version**: Railway sẽ dùng Node 20 từ Dockerfile
 
 5. Thêm Environment Variables:
    ```
    DATABASE_URL=your_database_url
    PORT=3000
+   MAIN_APP_URL=https://your-app.netlify.app
+   CMS_URL=https://your-cms.netlify.app
    ```
 
 6. Railway sẽ tự động deploy và cung cấp URL
@@ -134,8 +142,9 @@ NODE_ENV=production
 3. Kết nối GitHub repository
 4. Cấu hình:
    - **Name**: `trader-socket-server`
-   - **Environment**: `Node`
-   - **Build Command**: (để trống)
+   - **Environment**: `Docker` (quan trọng! Phải chọn Docker để dùng Node 20)
+   - **Dockerfile Path**: `./Dockerfile`
+   - **Docker Context**: `.` (root directory)
    - **Start Command**: `node socket-server.js`
    - **Plan**: Free
 
@@ -143,7 +152,11 @@ NODE_ENV=production
    ```
    DATABASE_URL=your_database_url
    PORT=3000
+   MAIN_APP_URL=https://your-app.netlify.app
+   CMS_URL=https://your-cms.netlify.app
    ```
+
+**Lưu ý**: Phải chọn Environment là `Docker` để Render sử dụng Dockerfile với Node 20. Nếu chọn `Node`, Render sẽ dùng Node 18 mặc định và sẽ bị lỗi với Prisma 7.
 
 ---
 
