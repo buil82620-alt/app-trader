@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AssetsPage from '../components/assets/AssetsPage';
+---
+
+<Layout title="My Assets" isShowHeader={false}>
+  <AssetsPage client:load />
+</Layout>
+

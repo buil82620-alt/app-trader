@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OrderPage from '../components/order/OrderPage';
+---
+
+<Layout title="Order record" isShowHeader={false}>
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <OrderPage client:load />
+  </div>
+</Layout>
+
+

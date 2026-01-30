@@ -1,0 +1,91 @@
+import type { APIContext } from 'astro';
+import bcrypt from 'bcryptjs';
+import { prisma } from '../../../server/prisma';
+import { Prisma } from '@prisma/client';
+
+export async function POST(context: APIContext): Promise<Response> {
+  try {
+    let body: unknown = {};
+    try {
+      body = await context.request.json();
+    } catch {
+      return new Response(JSON.stringify({ error: 'Invalid JSON body' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    const { email, password } = body as { email?: string; password?: string };
+
+    if (!email || !password) {
+      return new Response(
+        JSON.stringify({ error: 'Email and password are required' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
+    }
+
+    const existing = await prisma.user.findUnique({
+      where: { email },
+      select: { id: true },
+    });
+
+    if (existing) {
+      return new Response(
+        JSON.stringify({ error: 'Email already registered' }),
+        {
+          status: 409,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
+    }
+
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    // Create user and initial wallet in transaction
+    const result = await prisma.$transaction(async (tx) => {
+      const user = await tx.user.create({
+        data: {
+          email,
+          passwordHash,
+        },
+        select: { id: true },
+      });
+
+      await tx.wallet.create({
+        data: {
+          userId: user.id,
+          asset: 'USDT',
+          available: new Prisma.Decimal(0),
+          locked: new Prisma.Decimal(0),
+        },
+      });
+
+      return user;
+    });
+
+    return new Response(
+      JSON.stringify({
+        success: true,
+        userId: result.id,
+        message: 'Account created successfully. Welcome bonus: 1000 USDT',
+      }),
+      {
+        status: 201,
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
+  } catch (error) {
+    console.error('Register error:', error);
+    return new Response(
+      JSON.stringify({ error: 'Internal server error' }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
+  }
+}
+
+

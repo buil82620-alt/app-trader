@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CoinsPage from '../components/coins/CoinsPage';
+---
+
+<Layout title="Coins Trading" isShowHeader={false}>
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <CoinsPage client:only />
+  </div>
+</Layout>

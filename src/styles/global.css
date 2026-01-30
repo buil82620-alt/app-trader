@@ -1,0 +1,14 @@
+/* Global custom styles for the app
+   This file is loaded from Layout.astro frontmatter via import.
+*/
+
+
+body {
+    background-color: #252525;
+    color: white;
+    padding-bottom: 80px; /* Space for footer */
+  }
+
+  a#tv-attr-logo {
+    display: none !important;
+}

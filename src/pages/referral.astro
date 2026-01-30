@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import ReferralPage from '../components/profile/referral/ReferralPage';
+---
+
+<LoginLayout title="Invite friends">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <ReferralPage client:load />
+  </div>
+</LoginLayout>
+
+

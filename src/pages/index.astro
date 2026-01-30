@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroBanner from '../components/home/HeroBanner';
+import ServiceIcons from '../components/home/ServiceIcons';
+import MarketCards from '../components/home/MarketCards';
+import AssetListTab from '../components/home/AssetListTab';
+import AboutUs from '../components/home/AboutUs';
+---
+
+<Layout title="Trading Dashboard">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen pb-20">
+    <HeroBanner client:load />
+    <ServiceIcons client:load />
+    <MarketCards client:load />
+    <AssetListTab client:load />
+    <AboutUs client:load />
+  </div>
+</Layout>

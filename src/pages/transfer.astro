@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import TransferPage from '../components/transfer/TransferPage';
+---
+
+<LoginLayout title="Transfer">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <TransferPage client:load />
+  </div>
+</LoginLayout>
+
+

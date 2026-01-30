@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AssetDetailPage from '../../components/assets/AssetDetailPage';
+
+const accountType = Astro.url.searchParams.get('accountType') || 'coins';
+const asset = Astro.url.searchParams.get('asset') || 'USDT';
+---
+
+<Layout title="Asset Detail" isShowHeader={false}>
+  <AssetDetailPage accountType={accountType} asset={asset} client:load />
+</Layout>
+

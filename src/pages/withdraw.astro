@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import WithdrawPage from '../components/withdraw/WithdrawPage';
+---
+
+<LoginLayout title="Withdraw">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <WithdrawPage client:load />
+  </div>
+</LoginLayout>
+
+

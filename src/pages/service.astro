@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import ServicePage from '../components/service/ServicePage';
+---
+
+<LoginLayout title="Service">
+  <div class="max-w-md mx-auto min-h-screen bg-gray-200">
+    <ServicePage client:load />
+  </div>
+</LoginLayout>
+
+

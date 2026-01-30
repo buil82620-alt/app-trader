@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import SecurityCenterPage from '../components/profile/security/SecurityCenterPage';
+---
+
+<LoginLayout title="Security center">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <SecurityCenterPage client:load />
+  </div>
+</LoginLayout>
+
+

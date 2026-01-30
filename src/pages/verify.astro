@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import VerifyPage from '../components/verify/VerifyPage';
+---
+
+<LoginLayout title="Verify">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <VerifyPage client:load />
+  </div>
+</LoginLayout>
+
+

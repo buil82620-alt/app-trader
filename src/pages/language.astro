@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import LanguagePage from '../components/language/LanguagePage';
+---
+
+<LoginLayout title="Language">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <LanguagePage client:load />
+  </div>
+</LoginLayout>
+
+

@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContractPage from '../components/contract/ContractPage';
+---
+
+<Layout title="Contract Trading" isShowHeader={false}>
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <ContractPage client:load />
+  </div>
+</Layout>

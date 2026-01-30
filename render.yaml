@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: trader-socket-server
+    env: node
+    buildCommand: ""
+    startCommand: node socket-server.js
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: PORT
+        value: 3000
+      - key: MAIN_APP_URL
+        sync: false
+      - key: CMS_URL
+        sync: false
+

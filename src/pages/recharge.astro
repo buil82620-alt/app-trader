@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import RechargePage from '../components/recharge/RechargePage';
+---
+
+<LoginLayout title="Recharge">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <RechargePage client:load />
+  </div>
+</LoginLayout>
+
+

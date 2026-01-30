@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProfileHeader from '../components/profile/ProfileHeader';
+import MyAssetsCard from '../components/profile/MyAssetsCard';
+import ActionButtons from '../components/profile/ActionButtons';
+import AccountCenter from '../components/profile/AccountCenter';
+import UniversalSection from '../components/profile/UniversalSection';
+---
+
+<Layout title="Profile" isShowHeader={false}>
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen pb-20">
+    <ProfileHeader client:load />
+    <MyAssetsCard client:load />
+    <ActionButtons client:load />
+    <AccountCenter client:load />
+    <!-- <UniversalSection client:load /> -->
+  </div>
+</Layout>

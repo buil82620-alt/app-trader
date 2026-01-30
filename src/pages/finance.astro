@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FinancePage from '../components/finance/FinancePage';
+---
+
+<Layout title="Finance">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <FinancePage client:load />
+  </div>
+</Layout>

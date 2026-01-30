@@ -1,0 +1,11 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import RegisterPage from '../components/register/RegisterPage';
+---
+
+<LoginLayout title="Register">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <RegisterPage client:load />
+  </div>
+</LoginLayout>
+

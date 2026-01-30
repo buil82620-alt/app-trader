@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import ExchangePage from '../components/exchange/ExchangePage';
+---
+
+<LoginLayout title="Exchange">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <ExchangePage client:load />
+  </div>
+</LoginLayout>
+
+

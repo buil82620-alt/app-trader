@@ -1,0 +1,12 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import LoanPage from '../components/loan/LoanPage';
+---
+
+<LoginLayout title="Loan">
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <LoanPage client:load />
+  </div>
+</LoginLayout>
+
+

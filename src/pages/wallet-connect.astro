@@ -1,0 +1,11 @@
+---
+import LoginLayout from '../layouts/LoginLayout.astro';
+import WalletConnectPage from '../components/wallet-connect/WalletConnectPage';
+---
+
+<LoginLayout title="Wallet Connect">
+  <div class="max-w-md mx-auto bg-[#14181d] min-h-screen">
+    <WalletConnectPage client:load />
+  </div>
+</LoginLayout>
+

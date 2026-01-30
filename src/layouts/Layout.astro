@@ -1,0 +1,75 @@
+---
+import Header from '../components/shared/Header';
+import FooterNav from '../components/shared/FooterNav';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  isShowHeader?: boolean;
+}
+
+const { title, isShowHeader = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Trading Dashboard" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      body {
+        background-color: #252525;
+        color: white;
+        padding-bottom: 80px; /* Space for footer */
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      a#tv-attr-logo {
+        display: none !important;
+      }
+      @keyframes slide-up {
+        from {
+          transform: translateY(100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .animate-slide-up {
+        animation: slide-up 0.3s ease-out;
+      }
+      .animate-fade-in {
+        animation: fade-in 0.3s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    {isShowHeader && <Header client:load />}
+    <main>
+      <slot />
+    </main>
+    <FooterNav client:load />
+  </body>
+</html>
