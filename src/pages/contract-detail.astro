@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContractDetailPage from '../components/contract/ContractDetailPage';
+---
+
+<Layout title="Contract Detail" isShowHeader={false}>
+  <div class="max-w-md mx-auto bg-gray-900 min-h-screen">
+    <ContractDetailPage client:only />
+  </div>
+</Layout>
+
+

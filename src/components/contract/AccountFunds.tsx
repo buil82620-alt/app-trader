@@ -241,10 +241,16 @@ export default function AccountFunds({
               const isBuyUp = position.side === 'BUY_UP';
               const timeLeft = Math.max(0, Math.floor((new Date(position.expiresAt).getTime() - Date.now()) / 1000));
 
+              const handleClick = () => {
+                window.location.href = `/contract-detail?id=${position.id}`;
+              };
+
               return (
-                <div
+                <button
                   key={position.id}
-                  className="bg-gray-800 rounded-lg p-3 border border-gray-700"
+                  type="button"
+                  onClick={handleClick}
+                  className="w-full text-left bg-gray-800 rounded-lg p-3 border border-gray-700 active:bg-gray-700"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-white text-sm font-medium">{displaySymbol}</span>
@@ -264,7 +270,7 @@ export default function AccountFunds({
                     <span>Entry: {position.entryPrice.toFixed(2)}</span>
                     <span>Time left: {timeLeft}s</span>
                   </div>
-                </div>
+                </button>
               );
             })
           )}
@@ -283,11 +289,17 @@ export default function AccountFunds({
               const displaySymbol = position.symbol.replace('USDT', '/USDT');
               const isBuyUp = position.side === 'BUY_UP';
               const isWin = position.result === 'WIN';
+              console.log(position)
+              const handleClick = () => {
+                window.location.href = `/contract-detail?id=${position.id}`;
+              };
 
               return (
-                <div
+                <button
                   key={position.id}
-                  className="bg-gray-800 rounded-lg p-3 border border-gray-700"
+                  type="button"
+                  onClick={handleClick}
+                  className="w-full text-left bg-gray-800 rounded-lg p-3 border border-gray-700 active:bg-gray-700"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-white text-sm font-medium">{displaySymbol}</span>
@@ -315,7 +327,7 @@ export default function AccountFunds({
                       <span>Exit: {position.exitPrice.toFixed(2)}</span>
                     )}
                   </div>
-                </div>
+                </button>
               );
             })
           )}
