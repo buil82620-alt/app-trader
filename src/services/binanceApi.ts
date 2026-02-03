@@ -47,17 +47,19 @@ export class BinanceAPI {
     try {
       const response = await fetch(`${BinanceAPI.baseUrl}/ticker/24hr?symbol=${symbol}`);
       const data: TickerData = await response.json();
-      
+
       return {
         price: parseFloat(data.price),
         changePercent: parseFloat(data.priceChangePercent),
       };
     } catch (error) {
       console.error('Error fetching ticker:', error);
-      // Return mock data on error
+      // IMPORTANT:
+      // Không trả về giá mock cố định vì sẽ làm UI hiển thị giá sai thực tế (vd: 88,843.50).
+      // Khi lỗi, trả về NaN để UI hiểu là dữ liệu không hợp lệ và hiển thị skeleton thay vì giá giả.
       return {
-        price: 88843.5,
-        changePercent: -0.68,
+        price: Number.NaN,
+        changePercent: Number.NaN,
       };
     }
   }

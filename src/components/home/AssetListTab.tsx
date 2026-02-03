@@ -68,78 +68,10 @@ const USDT_ASSETS: AssetConfig[] = [
   {
     symbol: 'XAU',
     pair: 'XAU/USDT',
-    binanceSymbol: 'XAUUSDT',
+    // Binance không có cặp XAUUSDT, dùng PAXGUSDT (PAX Gold) để đại diện giá vàng
+    binanceSymbol: 'PAXGUSDT',
     logoBgColor: '#C49B3F',
-    // Coingecko không có XAU chuẩn giống ví dụ, có thể map sang 'pax-gold' nếu cần
-    // coingeckoId: 'pax-gold',
-  },
-  {
-    symbol: 'FIG',
-    pair: 'FIG/USDT',
-    binanceSymbol: 'FIGUSDT',
-    logoBgColor: '#FFFFFF',
-    // coingeckoId: '...' // nếu có token cụ thể
-  },
-  // Extra coins for USDT tab
-  {
-    symbol: 'COMB',
-    pair: 'COMB/USDT',
-    binanceSymbol: 'COMBUSDT',
-    logoBgColor: '#6366F1',
-  },
-  {
-    symbol: 'EBUN',
-    pair: 'EBUN/USDT',
-    binanceSymbol: 'EBUNUSDT',
-    logoBgColor: '#EC4899',
-  },
-  {
-    symbol: 'KXSE',
-    pair: 'KXSE/USDT',
-    binanceSymbol: 'KXSEUSDT',
-    logoBgColor: '#0EA5E9',
-  },
-  {
-    symbol: 'ETF',
-    pair: 'ETF/USDT',
-    binanceSymbol: 'ETFUSDT',
-    logoBgColor: '#22C55E',
-  },
-  {
-    symbol: 'ALRA',
-    pair: 'ALRA/USDT',
-    binanceSymbol: 'ALRAUSDT',
-    logoBgColor: '#EAB308',
-  },
-  {
-    symbol: 'ABXL',
-    pair: 'ABXL/USDT',
-    binanceSymbol: 'ABXLUSDT',
-    logoBgColor: '#F97316',
-  },
-  {
-    symbol: 'QCX',
-    pair: 'QCX/USDT',
-    binanceSymbol: 'QCXUSDT',
-    logoBgColor: '#A855F7',
-  },
-  {
-    symbol: 'HNKI',
-    pair: 'HNKI/USDT',
-    binanceSymbol: 'HNKIUSDT',
-    logoBgColor: '#22C55E',
-  },
-  {
-    symbol: 'CPT',
-    pair: 'CPT/USDT',
-    binanceSymbol: 'CPTUSDT',
-    logoBgColor: '#16A34A',
-  },
-  {
-    symbol: 'CNOB',
-    pair: 'CNOB/USDT',
-    binanceSymbol: 'CNOBUSDT',
-    logoBgColor: '#0EA5E9',
+    coingeckoId: 'pax-gold',
   },
   {
     symbol: 'DOT',
