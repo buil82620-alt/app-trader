@@ -10,7 +10,9 @@ import TimeframeSelector from './TimeframeSelector';
 import CandlestickChart from './CandlestickChart';
 import AccountFunds from './AccountFunds';
 import TradingModal from './TradingModal';
+import OrderResultModal from './OrderResultModal';
 import LoadingSpinner from '../shared/LoadingSpinner';
+import { usePositionSettler } from '../../hooks/usePositionSettler';
 
 export default function ContractPage() {
   const {
@@ -32,6 +34,9 @@ export default function ContractPage() {
   const [tradingType, setTradingType] = useState<'buy-up' | 'buy-down'>('buy-up');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useAppTranslation();
+
+  // Auto-settle positions and show result modal
+  usePositionSettler();
 
   const cleanupRef = useRef<(() => void) | null>(null);
   const isInitialMount = useRef(true);
@@ -153,6 +158,9 @@ export default function ContractPage() {
         symbol={displaySymbol}
         currentPrice={price}
       />
+
+      {/* Order Result Modal - hiển thị kết quả sau khi settle */}
+      <OrderResultModal />
     </div>
   );
 }

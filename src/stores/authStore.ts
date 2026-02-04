@@ -20,7 +20,7 @@ export const useAuthStore = create<AuthState>()(
       email: null,
       token: null,
       isVerified: null,
-      login: (payload) => {
+      login: (payload) => { 
         if (typeof window !== 'undefined') {
           localStorage.setItem('isLoggedIn', 'true');
         }
